@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  '$_counter',
+                  '${state.counter}',
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ],
@@ -99,12 +99,16 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
-            onPressed: _decrementCounter,
+            onPressed: () {
+              context.read<CounterBloc>().add(DecrementEvent());
+            },
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
           FloatingActionButton(
-            onPressed: _incrementCounter,
+            onPressed: () {
+              context.read<CounterBloc>().add(IncrementEvent());
+            },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
