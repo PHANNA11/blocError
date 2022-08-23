@@ -1,4 +1,5 @@
 import 'package:bloc_counter2_4/bloc/counter_bloc.dart';
+import 'package:bloc_counter2_4/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -65,6 +66,24 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SecondScren(),
+                  ));
+            },
+            child: const Text(
+              'Next',
+              style: TextStyle(fontSize: 28),
+            ),
+          ),
+          const SizedBox(
+            width: 40,
+          )
+        ],
       ),
       body: BlocBuilder<CounterBloc, CounterState>(
         builder: (context, state) {
