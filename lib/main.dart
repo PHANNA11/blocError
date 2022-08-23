@@ -7,7 +7,6 @@ void main() {
   runApp(const MyApp());
 }
 
-/// Custom [BlocObserver] that observes all bloc and cubit state changes.
 class AppBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
@@ -43,7 +42,8 @@ class AppView extends StatelessWidget {
     return BlocBuilder<CounterBloc, CounterState>(
       builder: (context, state) {
         return const MaterialApp(
-          home: MyHomePage(title: 'title'),
+          color: Colors.blueAccent,
+          home: MyHomePage(title: 'Counter Blog'),
         );
       },
     );
@@ -60,20 +60,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
